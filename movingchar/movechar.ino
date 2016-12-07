@@ -15,6 +15,45 @@ int adc_key_in  = 0;
 int linePosition = 0;
 int colPosition = 0;
 
+byte smiley[8] = {
+  B00000,
+  B10001,
+  B00000,
+  B00000,
+  B10001,
+  B01110,
+  B00000,
+};
+
+byte sad[8] = {
+  B00000,
+  B10001,
+  B00000,
+  B00000,
+  B01110,
+  B10001,
+  B00000,
+};
+
+byte left[8] = {
+  B00000,
+  B11110,
+  B01111,
+  B00111,
+  B01111,
+  B11110,
+  B00000,
+};
+
+byte right[8] = {
+  B00000,
+  B01111,
+  B11110,
+  B11100,
+  B11110,
+  B01111,
+  B00000,
+};
 
 int read_LCD_buttons()
 {
@@ -32,18 +71,26 @@ int read_LCD_buttons()
 
 void setup() {
   // put your setup code here, to run once:
+  lcd.createChar(0, smiley);
+  lcd.createChar(1, sad);
+  lcd.createChar(3, left);
+  lcd.createChar(4, right);
   lcd.begin(16, 2);
 
-  int my_size = 8;
   lcd.setCursor(0,0);
+  lcd.print("Full Chub");
+  int my_size = 8;
+  lcd.setCursor(0,1);
   lcd.print("8");
   for (int i=1; i<my_size; i++) {
-    lcd.setCursor(i,0);
+    lcd.setCursor(i,1);
     lcd.print("=D   ");
     delay(500);
   }
   delay(1000);
   lcd.setCursor(0,0);
+  lcd.print("               ");
+  lcd.setCursor(0,1);
   lcd.print("               ");
   lcd.setCursor(0, 0);
   lcd.print(".");
@@ -73,7 +120,7 @@ void loop() {
         }
 
         lcd.setCursor(colPosition, linePosition);
-        lcd.print(".");
+        lcd.write(byte(4));
         delay(300);
         break;
       }
@@ -90,7 +137,7 @@ void loop() {
         }
 
         lcd.setCursor(colPosition, linePosition);
-        lcd.print(".");
+        lcd.write(byte(3));
         delay(300);
         break;
       }
@@ -111,7 +158,7 @@ void loop() {
         }
 
         lcd.setCursor(colPosition, linePosition);
-        lcd.print(".");
+        lcd.write(byte(0));
         delay(300);
         break;
       }
@@ -129,22 +176,22 @@ void loop() {
 
         }
         lcd.setCursor(colPosition, linePosition);
-        lcd.print(".");
+        lcd.write(byte(1));
         delay(300);
         break;
       }
 
 
-    //case btnSELECT:
-      //{
-       // lcd.print(".");
-       // break;
-     // }
-      //   case btnNONE:
-      //   {
-      //   lcd.print(".");
-      //   break;
-      //   }
+    case btnSELECT:
+      {
+       lcd.print(".");
+       break;
+     }
+        // case btnNONE:
+        // {
+        // lcd.print(".");
+        // break;
+        // }
   }
 
 
