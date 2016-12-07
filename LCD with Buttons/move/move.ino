@@ -56,9 +56,9 @@ void loop()
        for (int i=1; i<my_size; i++) {
          lcd.setCursor(i,1);
          lcd.print("=D   ");
-         delay(500);
+         delay(100);
        }
-       delay(1000);
+       delay(500);
      break;
      }
    case btnLEFT:
@@ -69,9 +69,9 @@ void loop()
      for (int i=1; i<my_size; i++) {
        lcd.setCursor(i,1);
        lcd.print("=D   ");
-       delay(500);
+       delay(100);
      }
-     delay(1000);
+     delay(500);
    break;
    }
    case btnUP:
@@ -91,7 +91,7 @@ void loop()
      }
      case btnNONE:
      {
-     lcd.print("        ");
+     lcd.print("              ");
      break;
      }
  }
