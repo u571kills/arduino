@@ -4,6 +4,9 @@
 // select the pins used on the LCD panel
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
 
+// vars
+int my_size = 1;
+
 // define some values used by the panel and buttons
 int lcd_key     = 0;
 int adc_key_in  = 0;
@@ -33,30 +36,44 @@ void setup()
 {
  lcd.begin(16, 2);              // start the library
  lcd.setCursor(0,0);
- lcd.print("Push my buttons"); // print a simple message
+ lcd.print("Try Me.."); // print a simple message
 }
 
 void loop()
 {
- lcd.setCursor(9,1);            // move cursor to second line "1" and 9 spaces over
- lcd.print(millis()/1000);      // display seconds elapsed since power-up
-
 
  lcd.setCursor(0,1);            // move to the begining of the second line
  lcd_key = read_LCD_buttons();  // read the buttons
+
 
  switch (lcd_key)               // depending on which button was pushed, we perform an action
  {
    case btnRIGHT:
      {
-     lcd.print("RIGHT ");
+       my_size = my_size + 1;
+       lcd.setCursor(0,1);
+       lcd.print("8");
+       for (int i=1; i<my_size; i++) {
+         lcd.setCursor(i,1);
+         lcd.print("=D   ");
+         delay(500);
+       }
+       delay(1000);
      break;
      }
    case btnLEFT:
-     {
-     lcd.print("LEFT   ");
-     break;
+   {
+     my_size = my_size - 1;
+     lcd.setCursor(0,1);
+     lcd.print("8");
+     for (int i=1; i<my_size; i++) {
+       lcd.setCursor(i,1);
+       lcd.print("=D   ");
+       delay(500);
      }
+     delay(1000);
+   break;
+   }
    case btnUP:
      {
      lcd.print("UP    ");
@@ -74,7 +91,7 @@ void loop()
      }
      case btnNONE:
      {
-     lcd.print("NONE  ");
+     lcd.print("        ");
      break;
      }
  }
