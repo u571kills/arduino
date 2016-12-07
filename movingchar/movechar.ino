@@ -33,9 +33,20 @@ int read_LCD_buttons()
 void setup() {
   // put your setup code here, to run once:
   lcd.begin(16, 2);
+
+  int my_size = 8;
+  lcd.setCursor(0,0);
+  lcd.print("8");
+  for (int i=1; i<my_size; i++) {
+    lcd.setCursor(i,0);
+    lcd.print("=D   ");
+    delay(500);
+  }
+  delay(1000);
+  lcd.setCursor(0,0);
+  lcd.print("               ");
   lcd.setCursor(0, 0);
   lcd.print(".");
-
 }
 
 void loop() {
@@ -50,7 +61,7 @@ void loop() {
     //RIGHT BUTTON
     case btnRIGHT:
       {
-        
+
         lcd.setCursor(colPosition, linePosition);
         lcd.print(" ");
         colPosition++;
@@ -66,7 +77,7 @@ void loop() {
         delay(300);
         break;
       }
-    
+
     //LEFT BUTTON
     case btnLEFT:
       {
@@ -83,11 +94,11 @@ void loop() {
         delay(300);
         break;
       }
-    
+
     //UP BUTTON
     case btnUP:
       {
-        
+
         lcd.setCursor(colPosition, linePosition);
         lcd.print(" ");
         linePosition = linePosition -1;
@@ -104,7 +115,7 @@ void loop() {
         delay(300);
         break;
       }
-    
+
     //DOWN BUTTON
     case btnDOWN:
       {
@@ -122,8 +133,8 @@ void loop() {
         delay(300);
         break;
       }
-    
-    
+
+
     //case btnSELECT:
       //{
        // lcd.print(".");
