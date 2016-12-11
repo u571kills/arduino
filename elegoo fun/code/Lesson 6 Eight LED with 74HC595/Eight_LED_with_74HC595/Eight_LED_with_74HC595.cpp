@@ -47,7 +47,6 @@ void updateShiftRegister()
 void buzzerBeepTime(int count)
 {
   for (int i = 0; i <= count; i++) {
-  byte leds2 = 0;
   bitSet(leds, 7);
   updateShiftRegister();
   delay(40);
