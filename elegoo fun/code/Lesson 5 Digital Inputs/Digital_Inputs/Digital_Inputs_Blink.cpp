@@ -27,13 +27,9 @@ void loop() {
     analogWrite(ledPin, bright);
     delay(10);
   }
-  if (bright > 230) {
-    digitalWrite(ledPin, HIGH);
-    delay(100);
-    digitalWrite(ledPin, LOW);
-    delay(100);
-  }
-  if (bright < 30 ) {
-    
-  }
+
+    // digitalWrite(ledPin, HIGH);
+    // delay(100);
+    // digitalWrite(ledPin, LOW);
+    // delay(100);
 }
