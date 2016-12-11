@@ -1,6 +1,7 @@
 //by Simon Monk
 //www.elegoo.com
 //2016.06.13
+// Modfied by Martin
 
 int latchPin = 5;
 int clockPin = 6;
@@ -27,7 +28,7 @@ void loop()
     buzzerBeepTime(i);
     delay(500);
   }
-  for (int i = 8; i <= 0; i--)
+  for (int i = 8; i >= 0; i--)
   {
     bitClear(leds, i);
     updateShiftRegister();
