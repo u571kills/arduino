@@ -1,3 +1,5 @@
+#include <Arduino.h>
+
 #include <LiquidCrystal.h>
 
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
@@ -55,8 +57,7 @@ byte right[8] = {
   B00000,
 };
 
-int read_LCD_buttons()
-{
+int read_LCD_buttons() {
   adc_key_in = analogRead(0);      // read the value from the sensor
   // my buttons when read are centered at these valies: 0, 144, 329, 504, 741
   // we add approx 50 to those values and check to see if we are close
@@ -77,20 +78,20 @@ void setup() {
   lcd.createChar(4, right);
   lcd.begin(16, 2);
 
-  lcd.setCursor(0,0);
+  lcd.setCursor(0, 0);
   lcd.print("Full Chub");
   int my_size = 8;
-  lcd.setCursor(0,1);
+  lcd.setCursor(0, 1);
   lcd.print("8");
-  for (int i=1; i<my_size; i++) {
-    lcd.setCursor(i,1);
+  for (int i=1; i < my_size; i++) {
+    lcd.setCursor(i, 1);
     lcd.print("=D   ");
     delay(500);
   }
   delay(1000);
-  lcd.setCursor(0,0);
+  lcd.setCursor(0, 0);
   lcd.print("               ");
-  lcd.setCursor(0,1);
+  lcd.setCursor(0, 1);
   lcd.print("               ");
   lcd.setCursor(0, 0);
   lcd.print(".");
@@ -163,7 +164,7 @@ void loop() {
         break;
       }
 
-    //DOWN BUTTON
+    // DOWN BUTTON
     case btnDOWN:
       {
         lcd.setCursor(colPosition, linePosition);
