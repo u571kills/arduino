@@ -57,6 +57,27 @@ byte right[8] = {
   B00000,
 };
 
+byte down[8] = {
+  B00000,
+  B01110,
+  B11111,
+  B11111,
+  B11011,
+  B10001,
+  B00000,
+};
+
+byte up[8] = {
+  B00000,
+  B00000,
+  B10001,
+  B11011,
+  B11111,
+  B11111,
+  B01110,
+  B00000,
+};
+
 int read_LCD_buttons() {
   adc_key_in = analogRead(0);      // read the value from the sensor
   // my buttons when read are centered at these valies: 0, 144, 329, 504, 741
@@ -72,20 +93,25 @@ int read_LCD_buttons() {
 
 void setup() {
   // put your setup code here, to run once:
-  lcd.createChar(0, smiley);
-  lcd.createChar(1, sad);
+  lcd.createChar(0, up);
+  lcd.createChar(1, down);
   lcd.createChar(3, left);
   lcd.createChar(4, right);
   lcd.begin(16, 2);
 
   lcd.setCursor(0, 0);
   lcd.print("Full Chub");
-  int my_size = 8;
+  int my_size = 10;
   lcd.setCursor(0, 1);
   lcd.print("8");
-  for (int i=1; i < my_size; i++) {
+  for (int i=1; i <= my_size; i++) {
     lcd.setCursor(i, 1);
     lcd.print("=D   ");
+    if (i == my_size)
+        {
+          lcd.setCursor(i, 1);
+          lcd.print("=D*   ");
+        }
     delay(500);
   }
   delay(1000);
